@@ -57,6 +57,11 @@
         ],
         "post-create-project-cmd": [
             "@php artisan key:generate --ansi"
+        ],
+        "post-install-cmd": [
+            "@php -r \"file_exists('.env') || copy('.env.dev', '.env');\"",
+            "@php -r \"file_exists('laradock/.env') || copy('.env.laradock.dev', 'laradock/.env');\"",
+            "@php artisan key:generate --ansi"
         ]
     }
 }
