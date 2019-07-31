@@ -51,7 +51,7 @@ class ContactsController extends Controller
         $this->repository->pushCriteria(app('Prettus\Repository\Criteria\RequestCriteria'));
         $contacts = $this->repository->all();
 
-        if (request()->wantsJson()) {
+        if (request()->wantsJson() || request()->isJson()) {
 
             return response()->json([
                 'data' => $contacts,
