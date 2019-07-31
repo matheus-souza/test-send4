@@ -157,7 +157,7 @@ class ContactsController extends Controller
                 'data'    => $contact->toArray(),
             ];
 
-            if ($request->wantsJson()) {
+            if ($request->wantsJson() || request()->isJson()) {
 
                 return response()->json($response);
             }
@@ -165,7 +165,7 @@ class ContactsController extends Controller
             return redirect()->back()->with('message', $response['message']);
         } catch (ValidatorException $e) {
 
-            if ($request->wantsJson()) {
+            if ($request->wantsJson() || request()->isJson()) {
 
                 return response()->json([
                     'error'   => true,
