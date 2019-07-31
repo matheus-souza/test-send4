@@ -18,7 +18,13 @@ class CreateContactsTable extends Migration
 		Schema::create('contacts', function(Blueprint $table) {
             $table->increments('id');
 
+            $table->string('nome');
+            $table->string('sobrenome');
+            $table->string('email')->unique();
+            $table->string('telefone')->nullable();
+
             $table->timestamps();
+            $table->softDeletes();
 		});
 	}
 
@@ -29,6 +35,8 @@ class CreateContactsTable extends Migration
 	 */
 	public function down()
 	{
+        Schema::table('contacts', function(Blueprint $table) {});
+
 		Schema::drop('contacts');
 	}
 }

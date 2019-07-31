@@ -20,6 +20,11 @@ class Contact extends Model implements Transformable
      *
      * @var array
      */
-    protected $fillable = [];
+    protected $fillable = [
+        'nome',
+        'sobrenome',
+        'email',
+        'telefone',
+    ];
 
 }
