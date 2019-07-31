@@ -20,7 +20,7 @@ class CreateContactsTable extends Migration
 
             $table->string('nome');
             $table->string('sobrenome');
-            $table->string('email')->unique();
+            $table->string('email');
             $table->string('telefone')->nullable();
 
             $table->timestamps();

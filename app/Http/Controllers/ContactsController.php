@@ -189,7 +189,7 @@ class ContactsController extends Controller
     {
         $deleted = $this->repository->delete($id);
 
-        if (request()->wantsJson()) {
+        if (request()->wantsJson() || request()->isJson()) {
 
             return response()->json([
                 'message' => 'Contact deleted.',

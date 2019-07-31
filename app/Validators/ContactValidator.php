@@ -21,7 +21,7 @@ class ContactValidator extends LaravelValidator
         ValidatorInterface::RULE_CREATE => [
             'nome' => 'required|min:3',
             'sobrenome' => 'required|min:3',
-            'email' => 'required|unique:contacts|min:3',
+            'email' => 'required|min:3',
         ],
         ValidatorInterface::RULE_UPDATE => [
             'nome' => 'required|min:3',
