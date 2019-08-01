@@ -51,7 +51,7 @@ class MessagesController extends Controller
         $this->repository->pushCriteria(app('Prettus\Repository\Criteria\RequestCriteria'));
         $messages = $this->repository->all();
 
-        if (request()->wantsJson()) {
+        if (request()->wantsJson() || request()->isJson()) {
 
             return response()->json([
                 'data' => $messages,
@@ -83,14 +83,14 @@ class MessagesController extends Controller
                 'data'    => $message->toArray(),
             ];
 
-            if ($request->wantsJson()) {
+            if ($request->wantsJson() || request()->isJson()) {
 
                 return response()->json($response);
             }
 
             return redirect()->back()->with('message', $response['message']);
         } catch (ValidatorException $e) {
-            if ($request->wantsJson()) {
+            if ($request->wantsJson() || request()->isJson()) {
                 return response()->json([
                     'error'   => true,
                     'message' => $e->getMessageBag()
@@ -112,7 +112,7 @@ class MessagesController extends Controller
     {
         $message = $this->repository->find($id);
 
-        if (request()->wantsJson()) {
+        if (request()->wantsJson() || request()->isJson()) {
 
             return response()->json([
                 'data' => $message,
@@ -159,7 +159,7 @@ class MessagesController extends Controller
                 'data'    => $message->toArray(),
             ];
 
-            if ($request->wantsJson()) {
+            if ($request->wantsJson() || request()->isJson()) {
 
                 return response()->json($response);
             }
@@ -167,7 +167,7 @@ class MessagesController extends Controller
             return redirect()->back()->with('message', $response['message']);
         } catch (ValidatorException $e) {
 
-            if ($request->wantsJson()) {
+            if ($request->wantsJson() || request()->isJson()) {
 
                 return response()->json([
                     'error'   => true,
@@ -191,7 +191,7 @@ class MessagesController extends Controller
     {
         $deleted = $this->repository->delete($id);
 
-        if (request()->wantsJson()) {
+        if (request()->wantsJson() || request()->isJson()) {
 
             return response()->json([
                 'message' => 'Message deleted.',
