@@ -15,5 +15,6 @@ use Illuminate\Http\Request;
 
 Route::apiResources([
     'contacts' => 'ContactsController',
-});
+    'messages' => 'MessagesController',
 ]);
+
