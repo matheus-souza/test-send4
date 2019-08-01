@@ -62,7 +62,7 @@
         ],
         "post-install-cmd": [
             "@php -r \"file_exists('.env') || copy('.env.dev', '.env');\"",
-            "@php -r \"file_exists('laradock/.env') || copy('.env.laradock.dev', 'laradock/.env');\"",
+            "@php artisan migrate --seed",
             "@php artisan key:generate --ansi"
         ]
     }
