@@ -49,14 +49,16 @@ class MessagesController extends Controller
     public function index()
     {
         $this->repository->pushCriteria(app('Prettus\Repository\Criteria\RequestCriteria'));
-        $messages = $this->repository->all();
 
         if (request()->wantsJson() || request()->isJson()) {
+            $messages = $this->repository->all();
 
             return response()->json([
                 'data' => $messages,
             ]);
         }
+
+        $messages = $this->repository->with('contact')->all();
 
         return view('messages.index', compact('messages'));
     }
@@ -110,14 +112,16 @@ class MessagesController extends Controller
      */
     public function show($id)
     {
-        $message = $this->repository->find($id);
 
         if (request()->wantsJson() || request()->isJson()) {
+            $message = $this->repository->find($id);
 
             return response()->json([
                 'data' => $message,
             ]);
         }
+
+        $message = $this->repository->with('contact')->find($id);
 
         return view('messages.show', compact('message'));
     }
