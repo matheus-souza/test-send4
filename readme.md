@@ -24,4 +24,13 @@ Execute o arquivo run
 ./run
 ```
 
+## Documentação do projeto
+### Documentação da API
+A documentação da API pública está disponível [neste endereço](https://documenter.getpostman.com/view/1774155/SVYnT26p)
 
+O ambiente para importar no Postman está disponível na pasta [doc](https://github.com/matheus-souza/test-send4/tree/master/doc)
+
+Imagens de exemplo dos resultados obtidos pelo Postman estão disponíveis no diretório [doc/images](https://github.com/matheus-souza/test-send4/tree/master/doc/images)
+
+### Acesso pelo navegador
+Após executar o projeto conforme a documentação acesse [localhost](http://localhost) para ter acesso as telas do projeto
