@@ -11,9 +11,11 @@
         "php": "^7.1.3",
         "fideloper/proxy": "^4.0",
         "laravel/framework": "5.8.*",
-        "laravel/tinker": "^1.0"
+        "laravel/tinker": "^1.0",
+        "prettus/l5-repository": "^2.6"
     },
     "require-dev": {
+        "appzcoder/crud-generator": "^3.0",
         "beyondcode/laravel-dump-server": "^1.0",
         "filp/whoops": "^2.0",
         "fzaninotto/faker": "^1.4",
@@ -56,6 +58,11 @@
             "@php -r \"file_exists('.env') || copy('.env.example', '.env');\""
         ],
         "post-create-project-cmd": [
+            "@php artisan key:generate --ansi"
+        ],
+        "post-install-cmd": [
+            "@php -r \"file_exists('.env') || copy('.env.dev', '.env');\"",
+            "@php artisan migrate --seed",
             "@php artisan key:generate --ansi"
         ]
     }

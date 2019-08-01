@@ -13,6 +13,11 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
+Route::apiResources([
+    'contacts' => 'ContactsController',
+    'messages' => 'MessagesController',
+]);
+
+Route::prefix('contacts/{contact_id}')->group(function () {
+    Route::get('messages', 'MessagesController@showByContact');
 });
