@@ -18,7 +18,13 @@ class MessageValidator extends LaravelValidator
      * @var array
      */
     protected $rules = [
-        ValidatorInterface::RULE_CREATE => [],
-        ValidatorInterface::RULE_UPDATE => [],
+        ValidatorInterface::RULE_CREATE => [
+            'contact_id' => 'required',
+            'descricao' => 'required|min:3',
+        ],
+        ValidatorInterface::RULE_UPDATE => [
+            'contact_id' => 'required',
+            'descricao' => 'required|min:3',
+        ],
     ];
 }
