@@ -12,6 +12,13 @@
                     </a>
                 </li>
             </ul>
+            <ul class="nav" role="tablist">
+                <li role="presentation">
+                    <a href="{{ route('messages.index') }}">
+                        Messages
+                    </a>
+                </li>
+            </ul>
         </div>
     </div>
 </div>
