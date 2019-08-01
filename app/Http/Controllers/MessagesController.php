@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Repositories\ContactRepository;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
@@ -25,6 +26,11 @@ class MessagesController extends Controller
     protected $repository;
 
     /**
+     * @var MessageRepository
+     */
+    protected $contactRepository;
+
+    /**
      * @var MessageValidator
      */
     protected $validator;
@@ -35,9 +41,10 @@ class MessagesController extends Controller
      * @param MessageRepository $repository
      * @param MessageValidator $validator
      */
-    public function __construct(MessageRepository $repository, MessageValidator $validator)
+    public function __construct(MessageRepository $repository, ContactRepository $contactRepository, MessageValidator $validator)
     {
         $this->repository = $repository;
+        $this->contactRepository = $contactRepository;
         $this->validator  = $validator;
     }
 
@@ -61,6 +68,18 @@ class MessagesController extends Controller
         $messages = $this->repository->with('contact')->all();
 
         return view('messages.index', compact('messages'));
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function create()
+    {
+        $contacts = $this->contactRepository->all(['id', 'nome'])->pluck('nome', 'id')->toArray();
+
+        return view('messages.create', compact('contacts'));
     }
 
     /**
