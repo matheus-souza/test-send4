@@ -18,3 +18,6 @@ Route::apiResources([
     'messages' => 'MessagesController',
 ]);
 
+Route::prefix('contacts/{contact_id}')->group(function () {
+    Route::get('messages', 'MessagesController@showByContact');
+});

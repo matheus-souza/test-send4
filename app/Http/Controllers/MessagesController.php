@@ -123,6 +123,27 @@ class MessagesController extends Controller
     }
 
     /**
+     * Display the specified resource.
+     *
+     * @param  int $id
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function showByContact($id)
+    {
+        $message = $this->repository->findByField('contact_id', $id);
+
+        if (request()->wantsJson() || request()->isJson()) {
+
+            return response()->json([
+                'data' => $message,
+            ]);
+        }
+
+        return view('messages.show', compact('message'));
+    }
+
+    /**
      * Show the form for editing the specified resource.
      *
      * @param  int $id
