@@ -30,4 +30,9 @@ class Contact extends Model implements Transformable
         'telefone',
     ];
 
+    public function messages()
+    {
+        return $this->hasMany('App\Entities\Message');
+    }
+
 }
